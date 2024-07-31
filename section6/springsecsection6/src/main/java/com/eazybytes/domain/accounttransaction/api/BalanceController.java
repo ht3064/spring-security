@@ -1,7 +1,7 @@
 package com.eazybytes.domain.accounttransaction.api;
 
 import com.eazybytes.domain.accounttransaction.application.AccountTransactionService;
-import com.eazybytes.domain.accounttransaction.dto.AccountTransactionResponse;
+import com.eazybytes.domain.accounttransaction.dto.response.AccountTransactionResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -1,6 +1,5 @@
 package com.eazybytes.domain.notice.domain;
 
-import com.eazybytes.domain.common.model.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -12,7 +11,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Notice extends BaseTimeEntity {
+public class Notice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,24 +26,37 @@ public class Notice extends BaseTimeEntity {
 
     private LocalDateTime noticeEndDt;
 
+    private LocalDateTime createDt;
+
+    private LocalDateTime updateDt;
+
     @Builder(access = AccessLevel.PRIVATE)
     private Notice(
-            String noticeSummary, String noticeDetails,
-            LocalDateTime noticeBegDt, LocalDateTime noticeEndDt) {
+            String noticeSummary,
+            String noticeDetails,
+            LocalDateTime noticeBegDt,
+            LocalDateTime noticeEndDt,
+            LocalDateTime createDt,
+            LocalDateTime updateDt) {
         this.noticeSummary = noticeSummary;
         this.noticeDetails = noticeDetails;
         this.noticeBegDt = noticeBegDt;
         this.noticeEndDt = noticeEndDt;
+        this.createDt = createDt;
+        this.updateDt = updateDt;
     }
 
     public static Notice createNotice(
-            String noticeSummary, String noticeDetails,
-            LocalDateTime noticeBegDt, LocalDateTime noticeEndDt) {
+            String noticeSummary,
+            String noticeDetails,
+            LocalDateTime noticeBegDt,
+            LocalDateTime noticeEndDt) {
         return Notice.builder()
                 .noticeSummary(noticeSummary)
                 .noticeDetails(noticeDetails)
                 .noticeBegDt(noticeBegDt)
                 .noticeEndDt(noticeEndDt)
+                .createDt(LocalDateTime.now())
                 .build();
     }
 }

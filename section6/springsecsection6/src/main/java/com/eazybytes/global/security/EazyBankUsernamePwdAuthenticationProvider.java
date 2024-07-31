@@ -1,4 +1,4 @@
-package com.eazybytes.global.config.security;
+package com.eazybytes.global.security;
 
 import com.eazybytes.domain.customer.dao.CustomerRepository;
 import com.eazybytes.domain.customer.domain.Customer;

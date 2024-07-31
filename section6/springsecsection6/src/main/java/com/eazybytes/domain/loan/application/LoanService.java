@@ -4,7 +4,7 @@ import com.eazybytes.domain.customer.dao.CustomerRepository;
 import com.eazybytes.domain.customer.domain.Customer;
 import com.eazybytes.domain.loan.dao.LoanRepository;
 import com.eazybytes.domain.loan.domain.Loan;
-import com.eazybytes.domain.loan.dto.LoanResponse;
+import com.eazybytes.domain.loan.dto.response.LoanResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

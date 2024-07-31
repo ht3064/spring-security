@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.Random;
 
 import static com.eazybytes.domain.contact.domain.Contact.createContact;
@@ -26,6 +27,7 @@ public class ContactService {
                 request.contactEmail(),
                 request.subject(),
                 request.message());
+
         contactRepository.save(contact);
 
         return ContactResponse.from(contact);

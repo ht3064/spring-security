@@ -2,7 +2,7 @@ package com.eazybytes.domain.accounttransaction.application;
 
 import com.eazybytes.domain.accounttransaction.dao.AccountTransactionRepository;
 import com.eazybytes.domain.accounttransaction.domain.AccountTransaction;
-import com.eazybytes.domain.accounttransaction.dto.AccountTransactionResponse;
+import com.eazybytes.domain.accounttransaction.dto.response.AccountTransactionResponse;
 import com.eazybytes.domain.customer.dao.CustomerRepository;
 import com.eazybytes.domain.customer.domain.Customer;
 import lombok.RequiredArgsConstructor;

@@ -2,7 +2,7 @@ package com.eazybytes.domain.card.application;
 
 import com.eazybytes.domain.card.dao.CardRepository;
 import com.eazybytes.domain.card.domain.Card;
-import com.eazybytes.domain.card.dto.CardResponse;
+import com.eazybytes.domain.card.dto.response.CardResponse;
 import com.eazybytes.domain.customer.dao.CustomerRepository;
 import com.eazybytes.domain.customer.domain.Customer;
 import lombok.RequiredArgsConstructor;

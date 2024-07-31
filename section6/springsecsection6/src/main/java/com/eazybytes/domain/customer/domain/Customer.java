@@ -1,16 +1,17 @@
 package com.eazybytes.domain.customer.domain;
 
-import com.eazybytes.domain.common.model.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Customer extends BaseTimeEntity {
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,26 +28,37 @@ public class Customer extends BaseTimeEntity {
 
     private String role;
 
+    private LocalDateTime createDt;
+
     @Builder(access = AccessLevel.PRIVATE)
     private Customer(
-            String name, String email, String mobileNumber,
-            String pwd, String role) {
+            String name,
+            String email,
+            String mobileNumber,
+            String pwd,
+            String role,
+            LocalDateTime createDt) {
         this.name = name;
         this.email = email;
         this.mobileNumber = mobileNumber;
         this.pwd = pwd;
         this.role = role;
+        this.createDt = createDt;
     }
 
     public static Customer createCustomer(
-            String name, String email, String mobileNumber,
-            String pwd, String role) {
+            String name,
+            String email,
+            String mobileNumber,
+            String pwd,
+            String role) {
         return Customer.builder()
                 .name(name)
                 .email(email)
                 .mobileNumber(mobileNumber)
                 .pwd(pwd)
                 .role(role)
+                .createDt(LocalDateTime.now())
                 .build();
     }
 }

@@ -28,7 +28,12 @@ public class CustomerService {
         try {
             String hashPwd = passwordEncoder.encode(request.pwd());
             Customer customer = createCustomer(
-                    request.name(), request.email(), request.mobileNumber(), hashPwd, request.role());
+                    request.name(),
+                    request.email(),
+                    request.mobileNumber(),
+                    hashPwd,
+                    request.role());
+
             Customer savedCustomer = customerRepository.save(customer);
 
             if (savedCustomer.getId() > 0) {

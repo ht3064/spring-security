@@ -1,7 +1,7 @@
 package com.eazybytes.domain.card.api;
 
 import com.eazybytes.domain.card.application.CardService;
-import com.eazybytes.domain.card.dto.CardResponse;
+import com.eazybytes.domain.card.dto.response.CardResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -39,15 +39,19 @@ public class AccountTransaction {
 
     private int closingBalance;
 
-    private LocalDateTime createdDt;
+    private LocalDateTime createDt;
 
     @Builder(access = AccessLevel.PRIVATE)
-
     private AccountTransaction(
-            String id, Account account, Customer customer,
-            LocalDateTime transactionDt, String transactionSummary,
-            String transactionType, int transactionAmt,
-            int closingBalance, LocalDateTime createdDt) {
+            String id,
+            Account account,
+            Customer customer,
+            LocalDateTime transactionDt,
+            String transactionSummary,
+            String transactionType,
+            int transactionAmt,
+            int closingBalance,
+            LocalDateTime createDt) {
         this.id = id;
         this.account = account;
         this.customer = customer;
@@ -56,14 +60,19 @@ public class AccountTransaction {
         this.transactionType = transactionType;
         this.transactionAmt = transactionAmt;
         this.closingBalance = closingBalance;
-        this.createdDt = createdDt;
+        this.createDt = createDt;
     }
 
     public static AccountTransaction createAccountTransaction(
-            String id, Account account, Customer customer,
-            LocalDateTime transactionDt, String transactionSummary,
-            String transactionType, int transactionAmt,
-            int closingBalance, LocalDateTime createdDt) {
+            String id,
+            Account account,
+            Customer customer,
+            LocalDateTime transactionDt,
+            String transactionSummary,
+            String transactionType,
+            int transactionAmt,
+            int closingBalance,
+            LocalDateTime createDt) {
         return AccountTransaction.builder()
                 .id(id)
                 .account(account)
@@ -73,7 +82,7 @@ public class AccountTransaction {
                 .transactionType(transactionType)
                 .transactionAmt(transactionAmt)
                 .closingBalance(closingBalance)
-                .createdDt(createdDt)
+                .createDt(createDt)
                 .build();
     }
 }

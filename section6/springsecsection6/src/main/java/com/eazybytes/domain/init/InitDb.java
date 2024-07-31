@@ -204,43 +204,37 @@ public class InitDb {
                     "Home Loan Interest rates reduced",
                     "Home loan interest rates are reduced as per the goverment guidelines. The updated rates will be effective immediately",
                     LocalDateTime.now().minusDays(30),
-                    LocalDateTime.now().plusDays(30)
-            );
+                    LocalDateTime.now().plusDays(30));
 
             Notice notice2 = createNotice(
                     "Net Banking Offers",
                     "Customers who will opt for Internet banking while opening a saving account will get a $50 amazon voucher",
                     LocalDateTime.now().minusDays(30),
-                    LocalDateTime.now().plusDays(30)
-            );
+                    LocalDateTime.now().plusDays(30));
 
             Notice notice3 = createNotice(
                     "Mobile App Downtime",
                     "The mobile application of the EazyBank will be down from 2AM-5AM on 12/05/2020 due to maintenance activities",
                     LocalDateTime.now().minusDays(30),
-                    LocalDateTime.now().plusDays(30)
-            );
+                    LocalDateTime.now().plusDays(30));
 
             Notice notice4 = createNotice(
                     "E Auction notice",
                     "There will be a e-auction on 12/08/2020 on the Bank website for all the stubborn arrears.Interested parties can participate in the e-auction",
                     LocalDateTime.now().minusDays(30),
-                    LocalDateTime.now().plusDays(30)
-            );
+                    LocalDateTime.now().plusDays(30));
 
             Notice notice5 = createNotice(
                     "Launch of Millennia Cards",
                     "Millennia Credit Cards are launched for the premium customers of EazyBank. With these cards, you will get 5% cashback for each purchase",
                     LocalDateTime.now().minusDays(30),
-                    LocalDateTime.now().plusDays(30)
-            );
+                    LocalDateTime.now().plusDays(30));
 
             Notice notice6 = createNotice(
                     "COVID-19 Insurance",
                     "EazyBank launched an insurance policy which will cover COVID-19 expenses. Please reach out to the branch for more details",
                     LocalDateTime.now().minusDays(30),
-                    LocalDateTime.now().plusDays(30)
-            );
+                    LocalDateTime.now().plusDays(30));
 
             em.persist(notice1);
             em.persist(notice2);
