@@ -1,18 +1,14 @@
 package com.eazybytes.global.security;
 
 import com.eazybytes.domain.auth.application.JwtTokenService;
+import com.eazybytes.domain.auth.dto.AccessTokenDto;
 import com.eazybytes.global.common.constants.SecurityConstants;
-import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -28,19 +24,16 @@ public class JwtTokenValidatorFilter extends OncePerRequestFilter {
     protected void doFilterInternal(
             HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-        String token = request.getHeader(SecurityConstants.ACCESS_TOKEN_HEADER);
-        if (token != null) {
-            try {
-                Claims claims = jwtTokenService.retrieveAccessToken(token);
+        String accessTokenValue = request.getHeader(SecurityConstants.ACCESS_TOKEN_HEADER);
 
-                String username = String.valueOf(claims.getId());
-                String authorities = (String) claims.get("authorities");
-                Authentication auth = new UsernamePasswordAuthenticationToken(
-                        username, null, AuthorityUtils.commaSeparatedStringToAuthorityList(authorities));
-
-                SecurityContextHolder.getContext().setAuthentication(auth);
-            } catch (Exception e) {
-                throw new BadCredentialsException("Invalid Token received");
+        if (accessTokenValue != null) {
+            AccessTokenDto accessTokenDto = jwtTokenService.retrieveAccessToken(accessTokenValue);
+            if (accessTokenDto != null) {
+                try {
+                    jwtTokenService.setAuthenticationToken(accessTokenDto.customerEmail(), accessTokenDto.role());
+                } catch (Exception e) {
+                    throw new BadCredentialsException("Invalid Token received");
+                }
             }
         }
         filterChain.doFilter(request, response);

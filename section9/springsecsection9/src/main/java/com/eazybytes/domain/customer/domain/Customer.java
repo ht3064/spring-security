@@ -26,6 +26,7 @@ public class Customer {
 
     private String pwd;
 
+    @Enumerated(EnumType.STRING)
     private CustomerRole role;
 
     private LocalDateTime createDt;
