@@ -7,10 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
-import static jakarta.persistence.FetchType.EAGER;
 
 @Entity
 @Getter
@@ -30,12 +26,9 @@ public class Customer {
 
     private String pwd;
 
-    private String role;
+    private CustomerRole role;
 
     private LocalDateTime createDt;
-
-    @OneToMany(mappedBy = "customer", fetch = EAGER)
-    private List<Authority> authorities = new ArrayList<>();
 
     @Builder(access = AccessLevel.PRIVATE)
     private Customer(
@@ -43,7 +36,7 @@ public class Customer {
             String email,
             String mobileNumber,
             String pwd,
-            String role,
+            CustomerRole role,
             LocalDateTime createDt) {
         this.name = name;
         this.email = email;
@@ -58,7 +51,7 @@ public class Customer {
             String email,
             String mobileNumber,
             String pwd,
-            String role) {
+            CustomerRole role) {
         return Customer.builder()
                 .name(name)
                 .email(email)

@@ -2,6 +2,7 @@ package com.eazybytes.domain.customer.application;
 
 import com.eazybytes.domain.customer.dao.CustomerRepository;
 import com.eazybytes.domain.customer.domain.Customer;
+import com.eazybytes.domain.customer.domain.CustomerRole;
 import com.eazybytes.domain.customer.dto.request.RegisterCustomerRequest;
 import com.eazybytes.domain.customer.dto.response.CustomerResponse;
 import com.eazybytes.global.util.CustomerUtil;
@@ -29,7 +30,7 @@ public class CustomerService {
                     request.email(),
                     request.mobileNumber(),
                     hashPwd,
-                    request.role());
+                    CustomerRole.valueOf(request.role()));
 
             Customer savedCustomer = customerRepository.save(customer);
 

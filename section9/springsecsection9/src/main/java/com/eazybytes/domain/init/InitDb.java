@@ -3,8 +3,8 @@ package com.eazybytes.domain.init;
 import com.eazybytes.domain.account.domain.Account;
 import com.eazybytes.domain.accounttransaction.domain.AccountTransaction;
 import com.eazybytes.domain.card.domain.Card;
-import com.eazybytes.domain.customer.domain.Authority;
 import com.eazybytes.domain.customer.domain.Customer;
+import com.eazybytes.domain.customer.domain.CustomerRole;
 import com.eazybytes.domain.loan.domain.Loan;
 import com.eazybytes.domain.notice.domain.Notice;
 import jakarta.annotation.PostConstruct;
@@ -19,7 +19,6 @@ import java.util.UUID;
 import static com.eazybytes.domain.account.domain.Account.createAccount;
 import static com.eazybytes.domain.accounttransaction.domain.AccountTransaction.createAccountTransaction;
 import static com.eazybytes.domain.card.domain.Card.createCard;
-import static com.eazybytes.domain.customer.domain.Authority.createAuthority;
 import static com.eazybytes.domain.customer.domain.Customer.createCustomer;
 import static com.eazybytes.domain.loan.domain.Loan.createLoan;
 import static com.eazybytes.domain.notice.domain.Notice.createNotice;
@@ -48,7 +47,7 @@ public class InitDb {
                     "happy@example.com",
                     "9876548337",
                     "$2y$12$oRRbkNfwuR8ug4MlzH5FOeui.//1mkd.RsOAJMbykTSupVy.x/vb2",
-                    "admin");
+                    CustomerRole.USER);
 
             em.persist(customer);
 
@@ -244,17 +243,6 @@ public class InitDb {
             em.persist(notice4);
             em.persist(notice5);
             em.persist(notice6);
-
-            Authority authority1 = createAuthority(
-                    customer,
-                    "ROLE_USER");
-
-            Authority authority2 = createAuthority(
-                    customer,
-                    "ROLE_ADMIN");
-
-            em.persist(authority1);
-            em.persist(authority2);
         }
     }
 }
