@@ -4,12 +4,10 @@ import com.eazybytes.domain.customer.dao.CustomerRepository;
 import com.eazybytes.domain.customer.domain.Customer;
 import com.eazybytes.domain.customer.dto.request.RegisterCustomerRequest;
 import com.eazybytes.domain.customer.dto.response.CustomerResponse;
-import com.eazybytes.global.error.exception.CustomException;
-import com.eazybytes.global.error.exception.ErrorCode;
+import com.eazybytes.global.util.CustomerUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class CustomerService {
 
     private final CustomerRepository customerRepository;
+    private final CustomerUtil customerUtil;
     private final PasswordEncoder passwordEncoder;
 
     public ResponseEntity<String> registerUser(RegisterCustomerRequest request) {
@@ -50,9 +49,8 @@ public class CustomerService {
         }
     }
 
-    public CustomerResponse getUserDetailsAfterLogin(Authentication authentication) {
-        Customer customer = customerRepository.findByEmail(authentication.getName())
-                .orElseThrow(() -> new CustomException(ErrorCode.CUSTOMER_NOT_FOUND));
+    public CustomerResponse getUserDetailsAfterLogin() {
+        Customer customer = customerUtil.getCurrentCustomer();
 
         return CustomerResponse.from(customer);
     }
